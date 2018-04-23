@@ -34,6 +34,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User getInfo(Integer id) {
+
         User user = userRepository.findUserById(id);
         return user;
     }

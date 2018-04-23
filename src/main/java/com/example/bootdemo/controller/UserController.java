@@ -44,70 +44,56 @@ public class UserController {
 
     @PostMapping("login")
     @ResponseBody
-    public String login(User user, HttpSession session){
+    public CallResult login(User user, HttpSession session){
         if ( null == user){
-            return "参数为空";
+            return ResultUtils.error("参数为空");
         }
-         User  user1 = userService.login(user);
-        if (null == user1){
-            return "没有该用户";
+         User  currUser = userService.login(user);
+        if (null == currUser){
+            return ResultUtils.error("没有该用户");
         }
 
-        session.setAttribute(Const.CURR_USER,user1);
-        return "登录成功";
+        session.setAttribute(Const.CURR_USER,currUser);
+        return ResultUtils.success(user);
     }
 
     @GetMapping("info/{id}")
     @ResponseBody
     public CallResult getUserInfo(@PathVariable("id") Integer id, HttpSession session){
         CallResult result = new CallResult();
-        User user = (User) session.getAttribute(Const.CURR_USER);
-        if (user==null){
-
-            return ResultUtils.error("user is not login");
-        }
       if (null == id){
           result.fail("参数错误");
           return result;
       }
-      User user1 = userService.getInfo(id);
-      if (user1 == null) {
+      User userInfo = userService.getInfo(id);
+      if (userInfo == null) {
           result.fail("无该用户");
           return result;
         }
-        System.out.println(user1.getUsername()+" ");
-        result.setData(user1);
+        System.out.println(userInfo.getUsername()+" ");
+        result.setData(userInfo);
         return result ;
     }
 
     @PostMapping("save")
     @ResponseBody
    public  CallResult saveUser(@Valid User user, BindingResult bindingResult,HttpSession session){
-        User user2 = (User) session.getAttribute(Const.CURR_USER);
-        if (user2==null){
-
-            return ResultUtils.error("user is not login");
-        }
       if (bindingResult.hasErrors()){
           return ResultUtils.error(bindingResult.getFieldError().getDefaultMessage());
       }
-     User user1 = userService.saveOrUpdate(user);
-      if (null == user1){
+     User users = userService.saveOrUpdate(user);
+      if (null == users){
 
           return ResultUtils.error("保存失败");
       }
 
-      return ResultUtils.success(user1);
+      return ResultUtils.success(users);
    }
 
    @GetMapping("list")
    @ResponseBody
    public CallResult listUsers(HttpSession session){
-       User user = (User) session.getAttribute(Const.CURR_USER);
-       if (user==null){
 
-           return ResultUtils.error("user is not login");
-       }
         List<User> users = userService.listUsers();
         if (CollectionUtils.isEmpty(users)){
             return ResultUtils.error("没数据");

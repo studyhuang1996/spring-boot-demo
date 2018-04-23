@@ -23,9 +23,14 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.xml.transform.Result;
+
+import static org.springframework.web.context.request.RequestContextHolder.getRequestAttributes;
 
 
 @Aspect
@@ -33,24 +38,33 @@ import javax.xml.transform.Result;
 public class HttpAspect {
 
    public  final static Logger logger = (Logger) LoggerFactory.getLogger(HttpAspect.class);
-    @Pointcut("execution(public * com.example.bootdemo.controller.UserController.*(..))")
-    public  void log(){
+    @Pointcut("execution(public * com.example.bootdemo.controller.*.*(..))")
+    public  void verify(){
 
     }
-    @Before("log()")
-    public void doBefore(){
-        System.out.println("11111");
-        logger.info("1111");
+    @Before("verify()")
+    public CallResult doBefore(){
+        // System.out.println("11111");
+        // logger.info("1111");
+       ServletRequestAttributes attributes =(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+       HttpServletRequest request = attributes.getRequest();
+       HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(Const.CURR_USER);
+        if (user == null){
+            logger.info("用户未登录");
+            return ResultUtils.error("用户未登录");
+        }
+        return ResultUtils.success(user);
 
     }
 
-    @After("log()")
+    @After("verify()")
     public void doAfter(){
         System.out.println("2222");
         logger.info("2222");
     }
 
-    @AfterReturning(returning = "object",pointcut = "log()")
+    @AfterReturning(returning = "object",pointcut = "verify()")
     public  void returnAfter(Object object){
      logger.info("response={}",object.toString());
     }
