@@ -27,6 +27,11 @@ public interface IUserService {
      */
     User getInfo(Integer id);
 
+    /**
+     * 保存更新
+     * @param user
+     * @return
+     */
     User saveOrUpdate(User user);
 
     /**
@@ -34,4 +39,6 @@ public interface IUserService {
      * @return
      */
     List<User> listUsers();
+
+    void deleteById(Integer id);
 }

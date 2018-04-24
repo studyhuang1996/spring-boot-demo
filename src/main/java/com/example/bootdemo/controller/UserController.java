@@ -1,9 +1,6 @@
 /*
  * @(#) UserController
- * 版权声明 厦门畅享信息技术有限公司, 版权所有 违者必究
- *
- * <br> Copyright:  Copyright (c) 2018
- * <br> Company:厦门畅享信息技术有限公司
+ * 用户控制类(增删改查)
  * <br> @author huang
  * <br> 2018-04-22 21:15:24
  */
@@ -14,13 +11,13 @@ package com.example.bootdemo.controller;
 import com.example.bootdemo.common.CallResult;
 import com.example.bootdemo.common.Const;
 import com.example.bootdemo.common.ResultUtils;
+import com.example.bootdemo.common.VerifyUser;
 import com.example.bootdemo.entity.User;
 import com.example.bootdemo.service.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,44 +42,39 @@ public class UserController {
     @PostMapping("login")
     @ResponseBody
     public CallResult login(User user, HttpSession session){
-        if ( null == user){
-            return ResultUtils.error("参数为空");
+         if (!VerifyUser.verify(user)){
+           return ResultUtils.error("参数传递错误");         }
+        User  currUser = userService.login(user);
+        if (!VerifyUser.verify(currUser)) {
+            return ResultUtils.error("该用户不存在");
         }
-         User  currUser = userService.login(user);
-        if (null == currUser){
-            return ResultUtils.error("没有该用户");
-        }
-
-        session.setAttribute(Const.CURR_USER,currUser);
+            session.setAttribute(Const.CURR_USER,currUser);
         return ResultUtils.success(user);
     }
 
+
     @GetMapping("info/{id}")
     @ResponseBody
-    public CallResult getUserInfo(@PathVariable("id") Integer id, HttpSession session){
-        CallResult result = new CallResult();
+    public CallResult getUserInfo(@PathVariable("id") Integer id){
       if (null == id){
-          result.fail("参数错误");
-          return result;
+          return ResultUtils.error("参数为空");
       }
-      User userInfo = userService.getInfo(id);
-      if (userInfo == null) {
-          result.fail("无该用户");
-          return result;
+      User user = userService.getInfo(id);
+        if (!VerifyUser.verify(user)) {
+            return ResultUtils.error("该用户不存在");
         }
-        System.out.println(userInfo.getUsername()+" ");
-        result.setData(userInfo);
-        return result ;
+        return ResultUtils.success(user);
     }
 
     @PostMapping("save")
     @ResponseBody
-   public  CallResult saveUser(@Valid User user, BindingResult bindingResult,HttpSession session){
+   public  CallResult saveUser(@Valid User user, BindingResult bindingResult){
       if (bindingResult.hasErrors()){
           return ResultUtils.error(bindingResult.getFieldError().getDefaultMessage());
       }
+
      User users = userService.saveOrUpdate(user);
-      if (null == users){
+      if (!VerifyUser.verify(users)){
 
           return ResultUtils.error("保存失败");
       }
@@ -92,13 +84,25 @@ public class UserController {
 
    @GetMapping("list")
    @ResponseBody
-   public CallResult listUsers(HttpSession session){
+   public CallResult listUsers(){
 
         List<User> users = userService.listUsers();
         if (CollectionUtils.isEmpty(users)){
             return ResultUtils.error("没数据");
         }
         return  ResultUtils.success(users);
+   }
+
+   @GetMapping("delete/{id}")
+   @ResponseBody
+   public  CallResult deleteById(@PathVariable Integer id){
+       if (null == id){
+           return ResultUtils.error("参数为空");
+       }
+
+       userService.deleteById(id);
+       return ResultUtils.success(null);
+
    }
 }
 

@@ -5,10 +5,10 @@
  * <br> Copyright:  Copyright (c) 2018
  * <br> Company:厦门畅享信息技术有限公司
  * <br> @author huang
- * <br> 2018-04-23 10:36:13
+ * <br> 2018-04-24 11:00:52
  */
 
-package com.example.bootdemo.entity;
+package com.example.bootdemo.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
