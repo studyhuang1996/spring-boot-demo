@@ -17,26 +17,43 @@
     <center>用户列表显示:</center> <br>
     <table align="center">
         <tr>
+            <th>编号</th>
             <th>用户名</th>
             <th>密码</th>
             <th>回答</th>
-            <th>用户名</th>
-            <th>密码</th>
+            <th>问题</th>
+            <th>手机</th>
+            <th>邮箱</th>
+            <th>角色</th>
             <th>操作</th>
         </tr>
         <#list users as user>
         <tr>
+            <td>${user.id}</td>
             <td>${user.username}</td>
             <td>${user.password}</td>
              <td>${user.answer!" no answer"}</td>
-            <td>${user.username}</td>
-            <td>${user.password}</td>
-            <td><button type="button" >编辑</button>&nbsp;&nbsp;
-                <button type="button" onclick="" >删除</button>
+            <td>${user.question!" no question"}</td>
+            <td>${user.phone!""}</td>
+            <td>${user.email!""}</td>
+            <td>
+                <#if user.role==1>
+                   管理员
+               <#else>
+                平民
+            </#if>
+            </td>
+            <td><a href="/user/save" >编辑</a>&nbsp;&nbsp;
+                <a href="/user/delete/${user.id}">删除</a>
             </td>
         </tr>
         </#list>
     </table>
+   <p>map使用</p>
+   <#list map?keys as key >
+    key---->${key}<br/>
+   value -->${map[key]!"null"}<br>
+   </#list>
    <p>使用list遍历</p>
     <#list users as user>
       username: ${user.username}<br>
@@ -49,11 +66,7 @@
        to 叙利亚
     </#if>
     </#list>
-   <p>map使用</p>
-   <#list map?keys as key >
-    key---->${key}<br/>
-   value -->${map[key]!"null"}<br>
-   </#list>
+
    <#include "footer.ftl"/>
 </body>
 </html>
