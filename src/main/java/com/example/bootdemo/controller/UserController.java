@@ -25,7 +25,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -104,5 +106,22 @@ public class UserController {
        return ResultUtils.success(null);
 
    }
+
+   @RequestMapping("lists")
+    public String listUser(Map<String,Object> maps){
+
+       List<User> users = userService.listUsers();
+       if (CollectionUtils.isEmpty(users)){
+           return "list";
+       }
+       Map<String,Object> map = new HashMap<>();
+       map.put("first","dddd");
+       map.put("second","yyyy");
+       map.put("username",new User("huang"));
+       maps.put("map",map);
+       maps.put("users",users);
+
+       return "list";
+    }
 }
 

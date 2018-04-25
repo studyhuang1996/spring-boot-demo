@@ -14,8 +14,11 @@ import com.example.bootdemo.property.PersonProfiles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping("say")
@@ -24,11 +27,19 @@ public class HelloController {
     @Autowired
     private PersonProfiles personProfiles;
 
-    @RequestMapping("hello")
-    @ResponseBody
-    public String helloPerson(){
+  @RequestMapping("hello1")
+  //  @ResponseBody
+    public String helloPerson(ModelMap map){
+         map.put("name",personProfiles.getName());
+       //
+        return "hello";
+    }
 
-        return personProfiles.getName();
+
+    @GetMapping("hello")
+    public String hello(Map<String,Object> maps){
+        maps.put("name","world");
+        return "hello";
     }
 
 }

@@ -57,6 +57,10 @@ public class User {
         this.updateTime = updateTime;
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
     public Integer getId() {
         return id;
     }
