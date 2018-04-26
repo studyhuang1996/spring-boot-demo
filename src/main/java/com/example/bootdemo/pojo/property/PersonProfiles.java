@@ -8,7 +8,7 @@
  * <br> 2018-04-24 11:00:52
  */
 
-package com.example.bootdemo.property;
+package com.example.bootdemo.pojo.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

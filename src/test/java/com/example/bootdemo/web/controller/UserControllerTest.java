@@ -5,7 +5,7 @@
  * <br> 2018-04-23 15:08:30
  */
 
-package com.example.bootdemo.controller;
+package com.example.bootdemo.web.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,10 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc

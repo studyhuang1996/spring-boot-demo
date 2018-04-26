@@ -5,7 +5,7 @@
  * <br> 2018-04-25 13:50:36
  */
 
-package com.example.bootdemo.resources;
+package com.example.bootdemo.web.resources;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

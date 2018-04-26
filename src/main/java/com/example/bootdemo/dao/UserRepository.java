@@ -10,11 +10,9 @@
 
 package com.example.bootdemo.dao;
 
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.pojo.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import javax.persistence.criteria.CriteriaBuilder;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
 

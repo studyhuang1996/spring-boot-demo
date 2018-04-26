@@ -8,9 +8,9 @@
  * <br> 2018-04-23 11:40:42
  */
 
-package com.example.bootdemo.controller;
+package com.example.bootdemo.web.controller;
 
-import com.example.bootdemo.property.PersonProfiles;
+import com.example.bootdemo.pojo.property.PersonProfiles;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

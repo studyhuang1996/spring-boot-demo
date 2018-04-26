@@ -8,7 +8,7 @@
  * <br> 2018-04-23 10:47:54
  */
 
-package com.example.bootdemo.common;
+package com.example.bootdemo.api.common;
 
 public  class Const {
     public static  final  String CURR_USER = "user";

@@ -5,14 +5,14 @@
  * <br> 2018-04-22 21:15:24
  */
 
-package com.example.bootdemo.controller;
+package com.example.bootdemo.web.controller;
 
 
-import com.example.bootdemo.common.CallResult;
-import com.example.bootdemo.common.Const;
-import com.example.bootdemo.common.ResultUtils;
-import com.example.bootdemo.common.VerifyUser;
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.api.common.CallResult;
+import com.example.bootdemo.api.common.Const;
+import com.example.bootdemo.api.common.ResultUtils;
+import com.example.bootdemo.api.common.VerifyUser;
+import com.example.bootdemo.pojo.entity.User;
 import com.example.bootdemo.service.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,13 +97,14 @@ public class UserController {
 
    @GetMapping("delete/{id}")
    @ResponseBody
-   public  CallResult deleteById(@PathVariable Integer id){
+   public  String deleteById(@PathVariable Integer id){
        if (null == id){
-           return ResultUtils.error("参数为空");
+        //   return "redirect:user/list";
+           return "list";
        }
 
        userService.deleteById(id);
-       return ResultUtils.success(null);
+       return "list";
 
    }
 

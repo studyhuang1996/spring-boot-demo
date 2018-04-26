@@ -7,7 +7,7 @@
 
 package com.example.bootdemo;
 
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.pojo.entity.User;
 import com.example.bootdemo.service.IUserService;
 
 import org.junit.Test;

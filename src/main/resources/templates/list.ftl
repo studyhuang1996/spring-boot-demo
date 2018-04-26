@@ -38,14 +38,21 @@
             <td>${user.question!" no question"}</td>
             <td>${user.phone!""}</td>
             <td>${user.email!""}</td>
-            <td>${user.createTime?string("yyyy-MM-dd")}</td>
-            <td>${user.updateTime}</td>
+            <#--<td>${user.createTime?string("yyyy-MM-dd")}</td>-->
+            </td><td>${user.createTime!""}</td>
+            <td>${user.updateTime!""}
+
             <td>
-                <#if user.role==1>
+            <#if user.role??>
+              <#if user.role==1>
                    管理员
-               <#else>
+              <#else>
                 平民
+              </#if>
+                <#else>
+                222
             </#if>
+
             </td>
             <td><a href="/user/save" >编辑</a>&nbsp;&nbsp;
                 <a href="/user/delete/${user.id}">删除</a>

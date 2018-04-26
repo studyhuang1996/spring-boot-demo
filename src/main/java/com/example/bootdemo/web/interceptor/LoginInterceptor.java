@@ -5,9 +5,9 @@
  * <br> 2018-04-24 09:42:55
  */
 
-package com.example.bootdemo.interceptor;
+package com.example.bootdemo.web.interceptor;
 
-import com.example.bootdemo.common.Const;
+import com.example.bootdemo.api.common.Const;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

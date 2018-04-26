@@ -1,17 +1,27 @@
 /*
  * @(#) HttpAspect
+ * 版权声明 厦门畅享信息技术有限公司, 版权所有 违者必究
+ *
+ * <br> Copyright:  Copyright (c) 2018
+ * <br> Company:厦门畅享信息技术有限公司
+ * <br> @author huang
+ * <br> 2018-04-26 14:13:57
+ */
+
+/*
+ * @(#) HttpAspect
  * aop实现登录拦截
  * 不能用换拦截器
  * <br> @author huang
  * <br> 2018-04-23 11:57:57
  */
 
-package com.example.bootdemo.aspect;
+package com.example.bootdemo.web.aspect;
 
-import com.example.bootdemo.common.CallResult;
-import com.example.bootdemo.common.Const;
-import com.example.bootdemo.common.ResultUtils;
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.api.common.CallResult;
+import com.example.bootdemo.api.common.Const;
+import com.example.bootdemo.api.common.ResultUtils;
+import com.example.bootdemo.pojo.entity.User;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -32,7 +42,7 @@ import javax.servlet.http.HttpSession;
 public class HttpAspect {
 
    public  final static Logger logger = (Logger) LoggerFactory.getLogger(HttpAspect.class);
-    @Pointcut("execution(public * com.example.bootdemo.controller.*.*(..))")
+    @Pointcut("execution(public * com.example.bootdemo.web.controller.*.*(..))")
     public  void verify(){
 
     }

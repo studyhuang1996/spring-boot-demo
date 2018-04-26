@@ -8,7 +8,7 @@
  * <br> 2018-04-24 11:09:29
  */
 
-package com.example.bootdemo.common;
+package com.example.bootdemo.api.common;
 
 public class VerifyUser {
 

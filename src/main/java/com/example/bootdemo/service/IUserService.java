@@ -7,7 +7,7 @@
 
 package com.example.bootdemo.service;
 
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.pojo.entity.User;
 
 import java.util.List;
 

@@ -11,7 +11,7 @@
 package com.example.bootdemo.service.impl;
 
 import com.example.bootdemo.dao.UserRepository;
-import com.example.bootdemo.entity.User;
+import com.example.bootdemo.pojo.entity.User;
 import com.example.bootdemo.service.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;

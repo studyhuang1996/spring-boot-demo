@@ -4,7 +4,7 @@
  * <br> 2018-04-23 10:59:38
  */
 
-package com.example.bootdemo.common;
+package com.example.bootdemo.api.common;
 
 import java.io.Serializable;
 import java.util.HashMap;

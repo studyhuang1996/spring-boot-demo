@@ -5,7 +5,7 @@
  * <br> 2018-04-24 10:45:53
  */
 
-package com.example.bootdemo.interceptor;
+package com.example.bootdemo.web.interceptor;
 
 
 import org.springframework.context.annotation.Configuration;
