@@ -115,5 +115,7 @@
 
         ![页面效果图](http://img.studyhuang.cn/freemarker.jpg)
 
+​    6.[FreeMarker的学习中常用语法]("http://studyhuang.cn/2018/04/25/1/#more")
+
 #### 2018.4.26
 

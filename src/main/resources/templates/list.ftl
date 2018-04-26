@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<#setting datetime_format="yyyy-MM-dd HH:mm:ss"/>
 <!--
   ~ @(#) list.html
   ~ <br> @author huang
@@ -25,6 +26,7 @@
             <th>手机</th>
             <th>邮箱</th>
             <th>角色</th>
+            <th>创建时间</th>
             <th>操作</th>
         </tr>
         <#list users as user>
@@ -36,6 +38,8 @@
             <td>${user.question!" no question"}</td>
             <td>${user.phone!""}</td>
             <td>${user.email!""}</td>
+            <td>${user.createTime?string("yyyy-MM-dd")}</td>
+            <td>${user.updateTime}</td>
             <td>
                 <#if user.role==1>
                    管理员
@@ -49,11 +53,34 @@
         </tr>
         </#list>
     </table>
+   <hr>
+   <#assign seq = ["winter", "spring", "summer", "autumn"]>
+  <#list seq as x>
+    ${x_index + 1}. ${x}<#if x_has_next>,</#if>
+   </#list>
+   <hr>
+   <#if user?exists>ss</#if>
+   直接嵌套${"hello , ${seq[0]}"}
+   加号${"hello , " + seq[1]}<br>
+   <#assign data = "abcd1234" >
+   第一个字母大写：${data?cap_first}
+   所有字母小写：${data?lower_case}
+   所有字母大写：${data?upper_case}
+ <#assign floatData = 12.34>
+   数值取整数：${floatData?int}
+   获取集合的长度：${users?size}
+
+   <#assign user='huang'> <#--定义user变量-->
+   ${user[2]} ${user[1..4]}
+   <hr>
    <p>map使用</p>
    <#list map?keys as key >
-    key---->${key}<br/>
+    key---->${key}
    value -->${map[key]!"null"}<br>
    </#list>
+      <#list map?values as value >
+       value:${value}
+      </#list>
    <p>使用list遍历</p>
     <#list users as user>
       username: ${user.username}<br>
