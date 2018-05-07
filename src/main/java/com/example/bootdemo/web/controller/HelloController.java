@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("say")
@@ -40,6 +43,16 @@ public class HelloController {
     public String hello(Map<String,Object> maps){
         maps.put("name","world");
         return "hello";
+    }
+
+    @GetMapping("/uid")
+    String uid(HttpSession session) {
+        UUID uid = (UUID) session.getAttribute("uid");
+        if (uid == null) {
+            uid = UUID.randomUUID();
+        }
+        session.setAttribute("uid", uid);
+        return session.getId();
     }
 
 }

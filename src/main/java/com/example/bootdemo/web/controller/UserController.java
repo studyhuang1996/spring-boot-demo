@@ -16,6 +16,7 @@ import com.example.bootdemo.pojo.entity.User;
 import com.example.bootdemo.service.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
@@ -123,6 +124,14 @@ public class UserController {
        maps.put("users",users);
 
        return "list";
+    }
+
+    @RequestMapping("/getUser")
+    @Cacheable(value = "user-key")
+    public  User getUser(){
+        User user = userService.getUser("123123");
+        System.out.println("缓存调用");
+        return user;
     }
 }
 

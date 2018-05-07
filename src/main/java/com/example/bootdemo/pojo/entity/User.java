@@ -10,6 +10,7 @@
 
 package com.example.bootdemo.pojo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Integer id;

@@ -41,4 +41,6 @@ public interface IUserService {
     List<User> listUsers();
 
     void deleteById(Integer id);
+
+    User getUser(String userName);
 }
