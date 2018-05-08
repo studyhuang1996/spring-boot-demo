@@ -47,6 +47,12 @@ public class CityController {
         return cityService.findOne(id);
     }
 
+    @GetMapping("findName/{cityName}")
+    public City findCityByName(@PathVariable String cityName){
+
+        return cityService.findByName(cityName);
+    }
+
     @PostMapping("save")
     public String saveCity(City city, BindingResult result){
         cityService.insert(city);

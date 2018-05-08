@@ -38,6 +38,7 @@ public class CityServiceImpl implements CityService {
     private RedisTemplate redisTemplate;
 
     @Override
+    @Cacheable(value = "city")
     public List<City> findCitys() {
 
         return cityMapper.findCitys();
