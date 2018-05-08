@@ -16,4 +16,5 @@ import org.springframework.stereotype.Component;
 @Component("productDao")
 @EnableRedisRepositories
 public class ProductDao {
+
 }

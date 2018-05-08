@@ -12,9 +12,11 @@ package com.example.bootdemo.dao;
 
 import com.example.bootdemo.pojo.entity.Product;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends BaseRepository<Product> {
 
-    Product findByProductId(Integer id);
+public interface ProductRepository extends JpaRepository<Product,Integer> {
+
+    Product findByProductId(Integer productId);
 
 }

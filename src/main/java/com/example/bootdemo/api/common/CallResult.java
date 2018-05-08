@@ -11,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CallResult implements Serializable {
-	boolean succee = true;
-	int code;
-	String msg = "操作成功";
-	Object data;
+	private boolean succee = true;
+	private boolean code;
+	private String msg = "操作成功";
+	private Object data;
 	
 	Map<String, Object> datas;
 
@@ -57,7 +57,7 @@ public class CallResult implements Serializable {
 		this.msg = msg;
 	}
 
-	public void fail(int code, String msg) {
+	public void fail(boolean code, String msg) {
 		this.succee = false;
 		this.msg = msg;
 		this.code = code;
@@ -68,7 +68,7 @@ public class CallResult implements Serializable {
 		this.msg = msg;
 	}
 
-	public void fail(int code) {
+	public void fail(boolean code) {
 		this.succee = false;
 		this.code = code;
 	}
@@ -82,11 +82,11 @@ public class CallResult implements Serializable {
 		return data;
 	}
 
-	public int getCode() {
+	public boolean getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(boolean code) {
 		this.code = code;
 	}
 

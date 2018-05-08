@@ -25,11 +25,14 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 添加缓存配置
  */
 @Configuration
 @EnableCaching
+@Slf4j
 public class RedisConfig<T>  extends CachingConfigurerSupport{
 
     @Bean
@@ -43,6 +46,7 @@ public class RedisConfig<T>  extends CachingConfigurerSupport{
                 for (Object obj : objects){
                     sb.append(obj.toString());
                 }
+                log.info("缓存的键:"+sb.toString());
                 return sb.toString();
             }
         };

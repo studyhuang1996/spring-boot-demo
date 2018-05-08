@@ -10,7 +10,20 @@
 
 package com.example.bootdemo.api.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum MessageEnum {
-   // ERROT_INFO("保存失败"),SUCCESS_INFO("DDF");
+
+     ARGS_ERROR(1,"参数不正确")
+    ;
+
+     private Integer code;
+     private String message;
+
+     MessageEnum(Integer code,String message){
+        this.code = code;
+        this.message = message;
+     }
 
 }

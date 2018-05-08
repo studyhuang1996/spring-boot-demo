@@ -11,5 +11,8 @@
 package com.example.bootdemo.api.common;
 
 public  class Const {
-    public static  final  String CURR_USER = "user";
+
+    public static final String CURR_USER = "user";
+
+    public static final String PREFIX = "city_";
 }

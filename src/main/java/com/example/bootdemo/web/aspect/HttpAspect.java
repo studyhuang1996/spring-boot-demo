@@ -42,10 +42,12 @@ import javax.servlet.http.HttpSession;
 public class HttpAspect {
 
    public  final static Logger logger = (Logger) LoggerFactory.getLogger(HttpAspect.class);
+
     @Pointcut("execution(public * com.example.bootdemo.web.controller.*.*(..))")
     public  void verify(){
 
     }
+
     @Before("verify()")
     @ResponseBody
     public CallResult doBefore(){
@@ -62,7 +64,7 @@ public class HttpAspect {
 
     @After("verify()")
     public void doAfter(){
-        System.out.println("2222");
+
         logger.info("2222");
     }
 

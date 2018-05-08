@@ -7,10 +7,12 @@
 
 package com.example.bootdemo.pojo.entity;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,12 +22,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @RedisHash("product")
+@Entity
 public class Product implements Serializable{
 
     @Id
+    private Integer productId;
     private String productName;
-
-    private Integer ProductId;
-
     private Integer productPrice;
 }

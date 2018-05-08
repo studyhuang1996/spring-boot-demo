@@ -10,10 +10,7 @@
 
 package com.example.bootdemo.service;
 
-import com.example.bootdemo.pojo.entity.Product;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +19,7 @@ public class RedisService {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
-    @Autowired
-    private RedisTemplate<String,Product> redisTemplates;
+  //  @Autowired
+   // private RedisTemplate<String,Product> redisTemplates;
 
 }

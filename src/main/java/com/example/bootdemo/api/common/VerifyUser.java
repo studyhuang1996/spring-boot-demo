@@ -13,9 +13,7 @@ package com.example.bootdemo.api.common;
 public class VerifyUser {
 
     public static boolean verify(Object object){
-       if ( null == object){
-           return false;
-       }
-       return  true;
+
+       return  object != null;
     }
 }

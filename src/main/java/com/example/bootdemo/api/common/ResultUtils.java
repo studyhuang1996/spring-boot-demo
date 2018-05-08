@@ -12,7 +12,7 @@ public class ResultUtils {
     public static CallResult success(Object object){
         CallResult result = new CallResult();
         result.setData(object);
-        result.setCode(0);
+        result.setCode(true);
         result.setMsg("操作成功");
         return result;
     }
@@ -21,7 +21,7 @@ public class ResultUtils {
     public static CallResult error(String msg){
         CallResult result = new CallResult();
 
-        result.setCode(1);
+        result.setCode(false);
         result.setMsg(msg);
         return result;
     }

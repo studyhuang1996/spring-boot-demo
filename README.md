@@ -119,3 +119,19 @@
 
 ### 2018.4.26
 
+######lombok的使用  
+
+* @Getter and @Setter  自动为属性提供 Set和Get 方法
+* @ToString  为类自动生成toString()方法
+* @EqualsAndHashCode /为对象字段自动生成hashCode和equals实现
+* @AllArgsConstructor, @RequiredArgsConstructor and @NoArgsConstructor 为类自动生成对应参数的构造函数
+* @Log, @Log4j, @Log4j2, @Slf4j, @XSlf4j, @CommonsLog, @JBossLog 自动为类添加对应的log支持
+* **@Data** 自动为所有字段添加**@ToString**, **@EqualsAndHashCode**, **@Getter**，为非final字段添加**@Setter**,和**@RequiredArgsConstructor**，在类上面添加此注解，最常使用
+* @NonNull 避免空指针。作用在方法参数上的注解，用于自动生成空值参数检查
+* @Cleanup 调用close()方法。作用在局部变量上，在作用域结束时会自动调用close方法释放资源
+
+#### redis学习使用
+
+
+
+ 

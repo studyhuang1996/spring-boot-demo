@@ -38,9 +38,9 @@ public class ProductTest {
     @Test
     public void testSaveProduct(){
         Product product = new Product();
-        product.setProductPrice(15);
+        product.setProductPrice(16);
         product.setProductName("hahaa");
-        product.setProductId(10000);
+        product.setProductId(110110);
         productRepository.save(product);
     }
 
