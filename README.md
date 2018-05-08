@@ -131,6 +131,7 @@
 * @Cleanup 调用close()方法。作用在局部变量上，在作用域结束时会自动调用close方法释放资源
 
 #### redis学习使用
+[redis mybatis的配置](http://studyhuang.cn/2018/05/08/1/#more)
 
 
 
